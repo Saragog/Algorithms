@@ -22,9 +22,8 @@ public class SortingAlgorytms {
 	public void bubbleSort(ArrayList<Integer> inputList)
 	{
 		System.out.println("Input list:");
-		for(Integer i : inputList)
-			System.out.println(i);
-		
+		writeList(inputList);
+
 		boolean hasChanged;
 		for (int step = 0, size = inputList.size(); step < size; step++)
 		{
@@ -41,17 +40,14 @@ public class SortingAlgorytms {
 		}
 		
 		System.out.println("Result list:");
-		for(Integer i : inputList)
-			System.out.println(i);
-		
+		writeList(inputList);
 		return;
 	}
 	
 	public void selectionSort(ArrayList<Integer> inputList)
 	{
 		System.out.println("Input list:");
-		for(Integer i : inputList)
-			System.out.println(i);
+		writeList(inputList);
 		
 		boolean hasToChange;
 		int smallestPosition;
@@ -81,8 +77,7 @@ public class SortingAlgorytms {
 		}
 		
 		System.out.println("Result list:");
-		for(Integer i : inputList)
-			System.out.println(i);
+		writeList(inputList);
 		
 		return;
 	}
@@ -136,8 +131,7 @@ public class SortingAlgorytms {
 	public void insertionSort(List<Integer> inputList)
 	{
 		System.out.println("Input list:");
-		for(Integer i : inputList)
-			System.out.println(i);
+		writeList(inputList);
 		
 		int size = inputList.size();
 		List<Integer> resultList = new ArrayList<Integer>(inputList);
@@ -148,8 +142,7 @@ public class SortingAlgorytms {
 			insertValueToSortedList(resultList, inputList.get(actualCheckedNumberPosition).intValue());
 	
 		System.out.println("Result list:");
-		for(Integer i : resultList)
-			System.out.println(i);
+		writeList(resultList);
 		
 		return;
 	}
@@ -227,7 +220,6 @@ public class SortingAlgorytms {
 		List<Integer> result = new LinkedList<Integer>();
 		Integer valueToAdd;
 		int size1 = first.size(), size2 = second.size();
-		System.out.println("Size1: " + size1 + " Size2: " + size2);
 		for (int actualNumberIndex1 = 0, actualNumberIndex2 = 0;
 				 actualNumberIndex1 < size1 || actualNumberIndex2 < size2;)
 		{
@@ -263,18 +255,23 @@ public class SortingAlgorytms {
 	
 	private List<Integer> recursiveQuickSort(List<Integer> inputList)
 	{
-		List<Integer> firstPart = new ArrayList<Integer>();
-		List<Integer> secondPart = new ArrayList<Integer>();
-
-		// ----
+		List<Integer> firstPart = new LinkedList<Integer>();
+		List<Integer> secondPart = new LinkedList<Integer>();
+		if (inputList.size() == 0) return inputList;
+		int dividingValue = inputList.get(0).intValue();
+		Integer actualNumberFromList;
 		
-		// TODO znajdowanie wartosci dzielacej na 2 czesci i wykonywanie podzialu
-		
-		
-		
-		// ----
+		for (int size = inputList.size(), actualElementIndex = 1;
+				actualElementIndex < size; actualElementIndex++)
+		{
+			actualNumberFromList = inputList.get(actualElementIndex);
+			if (actualNumberFromList.intValue() <= dividingValue)
+				firstPart.add(actualNumberFromList);
+			else secondPart.add(actualNumberFromList);
+		}
 		
 		firstPart = recursiveQuickSort(firstPart);
+		firstPart.add(Integer.valueOf(dividingValue));
 		firstPart.addAll(recursiveQuickSort(secondPart));
 		return firstPart;
 	}
@@ -283,7 +280,7 @@ public class SortingAlgorytms {
 	{
 		System.out.println("Input list: ");
 		writeList(inputList);
-		List<Integer> resultList = recursiveQuickSort(inputList);
+		List<Integer> resultList = recursiveQuickSort(new LinkedList<Integer>(inputList));
 		System.out.println("Result list:");
 		writeList(resultList);
 		return;

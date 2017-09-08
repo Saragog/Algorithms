@@ -13,8 +13,8 @@ public class Algorythms {
 		//sorting.selectionSort(new ArrayList<Integer>(Arrays.asList(4,2,3,5,1,2,9,7)));
 		//sorting.insertionSort(new ArrayList<Integer>(Arrays.asList(3,1,5,3,16,8,2,1,12,6)));
 		//sorting.countingSort(new ArrayList<Integer>(Arrays.asList(3,1,5,3,16,8,2,1,12,6)));
-		sorting.mergeSort(new ArrayList<Integer>(Arrays.asList(2,12,3,6,3,1,11,5,8)));
-		
+		//sorting.mergeSort(new ArrayList<Integer>(Arrays.asList(2,12,3,6,3,1,11,5,8)));
+		sorting.quickSort(new ArrayList<Integer>(Arrays.asList(2,12,3,6,3,1,11,5,8)));
 		
 		int a = 5;
 		/*
